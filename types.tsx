@@ -14,32 +14,23 @@ declare global {
 }
 
 export type RootStackParamList = {
-  ServicesScreen: NavigatorScreenParams<RootTabParamList> | undefined;
-  Detail: undefined,
+  ServicesScreen: undefined;
+  ProductsScreen: undefined;
+  Detail: {
+    item: Item
+  },
   Modal: undefined;
   NotFound: undefined;
 };
 
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
-  RootStackParamList,
-  Screen
->;
 
-export type RootTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
-  TravelListDetail: item;
-};
-
-interface item{
-  key: String,
-  location: String,
-  numberOfDays: Number,
-  image: String,
-  color: String
+export interface Item {
+  key: string,
+  service: string,
+  image:string,
+  price: number,
+  color: string,
+  categorias: string,
+  description: string,
 }
 
-export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
-  BottomTabScreenProps<RootTabParamList, Screen>,
-  NativeStackScreenProps<RootStackParamList>
->;

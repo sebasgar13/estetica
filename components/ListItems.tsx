@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { tutorial2Spec } from '../assets/data/theme';
+import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 const {ITEM_HEIGHT, ITEM_WIDTH, RADIUS, SPACING, FULL_SIZE} = tutorial2Spec;
 
 interface Props {
@@ -59,6 +60,15 @@ export const ListItems = ({data}:Props) => {
                             transform: [{scale}]
                         }]} 
                     />
+                    <Svg style={{position:'absolute', top:0, left:0}} width="100%" height="100%">
+                        <Defs>
+                            <LinearGradient id="fondo" >
+                                <Stop offset={0} stopColor="rgba(0,0,0,0.5)" stopOpacity={0.5} />
+                                <Stop offset={1} stopColor="rgba(0,0,0,0.1)" stopOpacity={0.1} />
+                            </LinearGradient>
+                        </Defs>
+                        <Rect x="0" y="0" width="100%" height="110%" fill="url(#fondo)" />
+                    </Svg>
                 </View>
                 <Animated.Text 
                     style={[(styles.service), {transform: [{translateX}]}]}>
@@ -82,7 +92,7 @@ const styles = StyleSheet.create({
         margin: SPACING
     },
     service: {
-        fontSize: 30,
+        fontSize: 25,
         color: "#fff",
         fontWeight: '800',
         width: ITEM_WIDTH * 0.8,

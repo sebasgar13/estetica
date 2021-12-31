@@ -23,6 +23,10 @@ export default function ServicesScreen() {
                 <View style={{flex:1}}>
                     <ListItems data={services.filter((item) => item.categorias.includes('popular'))}/>
                 </View>
+                <Header title='Todos nuestros servicios' />
+                <View style={{flex:1}}>
+                    <ListItems data={services}/>
+                </View>
                 <Header title='Premium' />
                 <View style={{flex:1}}>
                     <ListItems data={services.filter((item) => item.categorias.includes('premium'))}/>

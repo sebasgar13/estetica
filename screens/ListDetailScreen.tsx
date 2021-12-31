@@ -1,10 +1,13 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react'
-import { Image, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { tutorial2Spec } from '../assets/data/theme';
+import { RootStackParamList } from '../types';
 const {ITEM_HEIGHT, ITEM_WIDTH, RADIUS, SPACING, FULL_SIZE} = tutorial2Spec;
 
+interface Props extends NativeStackScreenProps< RootStackParamList, 'Detail'>{};
 
-const ListDetailScreen = ({route}:any) => {
+const ListDetailScreen = ({route}:Props) => {
     const {height} = useWindowDimensions();
     const {item} = route.params;
     return (
@@ -20,8 +23,8 @@ const ListDetailScreen = ({route}:any) => {
                     left: 0
                 }} 
             />
+            <Text style={[(styles.location)]}>{item.service}</Text>
             <ScrollView style={{flex:1}}>
-                <Text style={[(styles.location)]}>{item.service}</Text>
                 <View style={{flex: 1, minHeight: 300 , marginTop: height-300, backgroundColor: 'white', padding: 16, borderTopStartRadius:16, borderTopEndRadius: 16}}>
                     <Text style={{color:"#444", fontSize:16, fontWeight: 'bold'}}>Precio: {item.price} $MX</Text>
                     <Text style={{marginTop: 16, marginBottom: 8, fontWeight: '800', fontSize: 20}}>Descripción:</Text>
